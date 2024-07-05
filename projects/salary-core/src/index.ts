@@ -11,7 +11,7 @@ async function bootstrapMy() {
 bootstrapMy();
 async function bootstray20w() {
   let salary = new Salary({
-    salaryCycle: 365,
+    salaryCycle: "365",
     salaryPerCycle: 200000,
     workHoursPerDay: 8,
     workSystem: WorkSystem["5/7"],

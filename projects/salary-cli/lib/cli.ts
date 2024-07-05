@@ -42,6 +42,7 @@ const prompts = [
 async function bootstrap() {
   const options = await inquirer.prompt(prompts);
   const salary = new Salary(options);
+  console.log(`salary.opts`, JSON.stringify(salary.opts, null, 2));
   const { workDaysPerYear, workHoursPerYear, salaryPerYear, salaryPerHour } =
     salary.start();
   console.log("每年工作天数", workDaysPerYear.toString());

@@ -14,11 +14,11 @@ export enum WorkSystem {
 // }
 export interface SalaryOptions {
   salaryCycle: string | number; // 365/12 一个月 365 一年
-  salaryPerCycle: number;
-  workHoursPerDay: number;
+  salaryPerCycle: number | string;
+  workHoursPerDay: number | string;
   workSystem: WorkSystem;
-  publicVacation: number;
-  yearEndAward: number; // 这里简化了 直接写数字
+  publicVacation: number | string;
+  yearEndAward: number | string; // 这里简化了 直接写数字
 }
 export const DEFAULT_OPTIONS: SalaryOptions = {
   salaryCycle: "365/12",
@@ -43,7 +43,10 @@ export class Salary {
   start() {
     // TODO 小时工
     let salaryCycle;
-    if (typeof this.opts.salaryCycle === "string") {
+    if (
+      typeof this.opts.salaryCycle === "string" &&
+      this.opts.salaryCycle.includes("/")
+    ) {
       salaryCycle = getFraction(this.opts.salaryCycle);
     } else {
       salaryCycle = new BigNumber(this.opts.salaryCycle);
