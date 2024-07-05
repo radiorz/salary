@@ -40,7 +40,6 @@ export class Salary {
     return workdayPerYear;
   }
   start() {
-    console.log(`this.opts`, this.opts);
     const salaryCycle = new BigNumber(this.opts.salaryCycle);
     const salaryPerCycle = new BigNumber(this.opts.salaryPerCycle);
     const yearEndAward = new BigNumber(this.opts.yearEndAward);
@@ -55,11 +54,12 @@ export class Salary {
     );
     const workHoursPerYear = workHoursPerDay.times(workDaysPerYear);
     const salaryPerHour = salaryPerYear.div(workHoursPerYear);
-    console.log("每年工作天数", workDaysPerYear.toString());
-    console.log("每年工作小时数", workHoursPerYear.toString());
-    console.log("年薪", salaryPerYear.toString());
-    console.log(`每个小时赚的钱`, salaryPerHour.toString());
-    return salaryPerHour.toString();
+    return {
+      workDaysPerYear,
+      workHoursPerYear,
+      salaryPerYear,
+      salaryPerHour,
+    };
   }
 }
 

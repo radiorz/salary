@@ -45,9 +45,9 @@ importers:
 
   projects/salary-client:
     dependencies:
-      bignumber:
-        specifier: ^1.1.0
-        version: 1.1.0
+      '@tikkhun/salary-core':
+        specifier: workspace:^
+        version: link:../salary-core
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -713,10 +713,6 @@ packages:
 
   bignumber.js@9.1.2:
     resolution: {integrity: sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug==}
-
-  bignumber@1.1.0:
-    resolution: {integrity: sha512-EGqHCKkEAwVwufcEOCYhZQqdVH+7cNCyPZ9yxisYvSjHFB+d9YcGMvorsFpeN5IJpC+lC6K+FHhu8+S4MgJazw==}
-    engines: {node: '>=0.4.0'}
 
   binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
@@ -2514,8 +2510,6 @@ snapshots:
   base64-js@1.5.1: {}
 
   bignumber.js@9.1.2: {}
-
-  bignumber@1.1.0: {}
 
   binary-extensions@2.3.0: {}
 

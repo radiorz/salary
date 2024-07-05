@@ -1,5 +1,5 @@
 import inquirer from "inquirer";
-import { DEFAULT_OPTIONS, Salary } from "./Salary";
+import { DEFAULT_OPTIONS, Salary } from "@tikkhun/salary-core";
 const prompts = [
   {
     type: "input",
@@ -36,6 +36,11 @@ const prompts = [
 async function bootstrap() {
   const options = await inquirer.prompt(prompts);
   const salary = new Salary(options);
-  await salary.start();
+  const { workDaysPerYear, workHoursPerYear, salaryPerYear, salaryPerHour } =
+    salary.start();
+  console.log("每年工作天数", workDaysPerYear.toString());
+  console.log("每年工作小时数", workHoursPerYear.toString());
+  console.log("年薪", salaryPerYear.toString());
+  console.log(`每个小时赚的钱`, salaryPerHour.toString());
 }
 bootstrap();
