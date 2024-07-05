@@ -13,7 +13,7 @@ export enum WorkSystem {
 
 // }
 export interface SalaryOptions {
-  salaryCycle: number; // 30 一个月 365 一年
+  salaryCycle: string | number; // 365/12 一个月 365 一年
   salaryPerCycle: number;
   workHoursPerDay: number;
   workSystem: WorkSystem;
@@ -21,7 +21,7 @@ export interface SalaryOptions {
   yearEndAward: number; // 这里简化了 直接写数字
 }
 export const DEFAULT_OPTIONS: SalaryOptions = {
-  salaryCycle: 30,
+  salaryCycle: "365/12",
   salaryPerCycle: 7000,
   workHoursPerDay: 8,
   workSystem: WorkSystem["11/14"], // 大小周
@@ -40,12 +40,19 @@ export class Salary {
     return workdayPerYear;
   }
   start() {
-    const salaryCycle = new BigNumber(this.opts.salaryCycle);
+    let salaryCycle;
+    if (typeof this.opts.salaryCycle === "string") {
+      salaryCycle = getFraction(this.opts.salaryCycle);
+    } else {
+      salaryCycle = new BigNumber(this.opts.salaryCycle);
+    }
     const salaryPerCycle = new BigNumber(this.opts.salaryPerCycle);
-    const yearEndAward = new BigNumber(this.opts.yearEndAward);
     const salaryPerDay = salaryPerCycle.div(salaryCycle);
-    const salaryPerYear = salaryPerDay
-      .times(new BigNumber(365))
+    const yearEndAward = new BigNumber(this.opts.yearEndAward);
+    const yearDays = new BigNumber(365);
+    const salaryPerYear = yearDays
+      .div(salaryCycle)
+      .times(salaryPerCycle)
       .plus(yearEndAward);
     const workHoursPerDay = new BigNumber(this.opts.workHoursPerDay);
     const workDaysPerYear = this.getWorkDayPerYear(
@@ -59,6 +66,7 @@ export class Salary {
       workHoursPerYear,
       salaryPerYear,
       salaryPerHour,
+      salaryPerDay,
     };
   }
 }
