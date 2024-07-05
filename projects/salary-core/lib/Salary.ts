@@ -39,7 +39,9 @@ export class Salary {
     const workdayPerYear = workingDaysRatio.times(365 - publicVacation);
     return workdayPerYear;
   }
+
   start() {
+    // TODO 小时工
     let salaryCycle;
     if (typeof this.opts.salaryCycle === "string") {
       salaryCycle = getFraction(this.opts.salaryCycle);

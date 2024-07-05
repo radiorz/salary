@@ -3,7 +3,7 @@ import { DEFAULT_OPTIONS, Salary } from "@tikkhun/salary-core";
 const prompts = [
   {
     type: "input",
-    name: "workingCycle",
+    name: "salaryCycle",
     default: DEFAULT_OPTIONS.salaryCycle,
     message: "薪资周期",
   },
