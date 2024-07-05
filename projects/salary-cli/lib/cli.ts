@@ -32,6 +32,12 @@ const prompts = [
     message: "工作制度",
     choices: ["6/7", "5/7", "5.5/7", "29/30"],
   },
+  {
+    type: "input",
+    name: "yearEndAward",
+    default: DEFAULT_OPTIONS.yearEndAward,
+    message: "年终奖金",
+  },
 ];
 async function bootstrap() {
   const options = await inquirer.prompt(prompts);
