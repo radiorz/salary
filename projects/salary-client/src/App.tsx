@@ -3,6 +3,7 @@ import {
   FormItem,
   FormLayout,
   Input,
+  Select,
   Submit,
 } from "@formily/antd-v5";
 import { createForm } from "@formily/core";
@@ -18,7 +19,6 @@ export default function App() {
   }
   return (
     <>
-      {JSON.stringify(form.values)}
       <FormProvider form={form}>
         <FormLayout layout="vertical">
           <Field
@@ -57,9 +57,15 @@ export default function App() {
             name="workSystem"
             title="工作制度"
             required
-            initialValue={DEFAULT_OPTIONS.workSystem}
+            initialValue={"5.5/7"}
+            dataSource={[
+              { label: "单休", value: "6/7" },
+              { label: "双休", value: "5/7" },
+              { label: "大小周", value: "5.5/7" },
+              { label: "月休一天", value: "29/30" },
+            ]}
             decorator={[FormItem]}
-            component={[Input]}
+            component={[Select]}
           />
           <Field
             name="yearEndAward"
@@ -79,8 +85,16 @@ export default function App() {
                 border: "1px dashed #666",
               }}
             >
-              {JSON.stringify(result, null, 2)}
-              {/* {result.start()} */}
+              <p>"每年工作天数", {result.workDaysPerYear.toString()}</p>
+              <p>"每年工作小时数", {result.workHoursPerYear.toString()}</p>
+              <p>
+                "年薪"
+                {result.salaryPerYear.toString()}
+              </p>
+              <p>
+                `每个小时赚的钱`,
+                {result.salaryPerHour.toString()}{" "}
+              </p>
             </div>
           )}
         </FormConsumer>
