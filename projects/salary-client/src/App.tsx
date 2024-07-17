@@ -10,7 +10,6 @@ import { createForm } from "@formily/core";
 import { Field, FormConsumer, FormProvider } from "@formily/react";
 import { DEFAULT_OPTIONS, Salary } from "@tikkhun/salary-core";
 import { useState } from "react";
-import "./App.css";
 const form = createForm();
 export default function App() {
   const [result, setResult] = useState(new Salary(form.values).start());
