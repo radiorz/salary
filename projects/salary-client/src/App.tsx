@@ -10,7 +10,7 @@ import { createForm } from "@formily/core";
 import { Field, FormConsumer, FormProvider } from "@formily/react";
 import { DEFAULT_OPTIONS, Salary } from "@tikkhun/salary-core";
 import { useState } from "react";
-
+import "./App.css";
 const form = createForm();
 export default function App() {
   const [result, setResult] = useState(new Salary(form.values).start());
@@ -18,7 +18,7 @@ export default function App() {
     setResult(new Salary(form.values).start());
   }
   return (
-    <>
+    <div>
       <FormProvider form={form}>
         <FormLayout layout="vertical">
           <Field
@@ -102,6 +102,6 @@ export default function App() {
           <Submit onSubmit={refreshResult}>submit</Submit>
         </FormButtonGroup>
       </FormProvider>
-    </>
+    </div>
   );
 }

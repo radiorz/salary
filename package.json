@@ -11,6 +11,7 @@
     "publish": "turbo run publish",
     "server-template:deploy": "del-cli deploy/server-template --force && pnpm --filter server-template deploy deploy/server-template && cd deploy/server-template && npm run build"
   },
+  "homepage": "https://radiorz.github.io/salary",
   "keywords": [],
   "author": "",
   "license": "ISC",
