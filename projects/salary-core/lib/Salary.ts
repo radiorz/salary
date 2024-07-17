@@ -62,7 +62,7 @@ export class Salary {
     const workHoursPerDay = new BigNumber(this.opts.workHoursPerDay);
     const workDaysPerYear = this.getWorkDayPerYear(
       this.opts.workSystem,
-      this.opts.publicVacation
+      Number(this.opts.publicVacation)
     );
     const workHoursPerYear = workHoursPerDay.times(workDaysPerYear);
     const salaryPerHour = salaryPerYear.div(workHoursPerYear);
