@@ -98,7 +98,7 @@ export default function App() {
           )}
         </FormConsumer>
         <FormButtonGroup>
-          <Submit onSubmit={refreshResult}>submit</Submit>
+          <Submit onSubmit={refreshResult}>提交计算</Submit>
         </FormButtonGroup>
       </FormProvider>
     </div>
